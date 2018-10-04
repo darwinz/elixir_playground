@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :elixir_playground, key: :value
+#     config :cards, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:elixir_playground, :key)
+#     Application.get_env(:cards, :key)
 #
 # You can also configure a 3rd-party app:
 #
