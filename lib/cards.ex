@@ -1,6 +1,8 @@
 defmodule Cards do
   @moduledoc """
   Documentation for Cards.
+
+  Provides methods for creating and handling a deck of cards
   """
 
   @doc """
@@ -37,8 +39,41 @@ defmodule Cards do
     Enum.shuffle(deck)
   end
 
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
+  end
+  
   def contains?(deck, card) do
     Enum.member?(deck, card)
+  end
+
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
+
+  def load(filename) do
+#    {status, binary} = File.read(filename)
+#
+#    case status do
+#      :ok -> :erlang.binary_to_term binary
+#      :error -> "That file does not exist"
+#    end
+
+    case File.read(filename) do
+      {:ok, binary} -> :erlang.binary_to_term binary
+      {:error, _reason} -> 'That file does not exist'
+    end
+  end
+
+  def create_hand(hand_size) do
+#    deck = Cards.create_deck
+#    deck = Cards.shuffle(deck)
+#    hand = Cards.deal(deck, hand_size)
+
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand_size)
   end
 end
 
