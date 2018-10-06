@@ -1,4 +1,4 @@
-defmodule CardsText do
+defmodule CardsTest do
   use ExUnit.Case
   doctest Cards
 
